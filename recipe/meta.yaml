@@ -1,5 +1,5 @@
 {% set name = "ooi-data-explorations" %}
-{% set version = "0.2.3.1" %}
+{% set version = "0.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/ooi_data_explorations-{{ version }}.tar.gz
-  sha256: 7adf309955d676f856d4d7a1143a6b2b5aec989ba39d1bd538867076e6844975
+  sha256: e4f4707c051d429a3a3f27c8816517c34f2aa9f814ff818cc0fa6abb91ef7d34
 
 build:
   noarch: python
