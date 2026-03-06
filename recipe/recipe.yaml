@@ -1,0 +1,61 @@
+schema_version: 1
+
+context:
+  version: "0.3.1"
+
+package:
+  name: ooi-data-explorations
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/o/ooi-data-explorations/ooi_data_explorations-${{ version }}.tar.gz
+  sha256: 83cb6f2e6085ee6833701136c8f2dbc997051b593644981a7f7ca20a4c6375a1
+
+build:
+  number: 0
+  noarch: python
+  script:
+    - rm -rf examples/
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - hatchling
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - xarray
+    - numpy >=1.26
+    - packaging >24.1
+    - pandas >=2.2
+    - beautifulsoup4
+    - erddapy
+    - gsw
+    - ioos-qc
+    - loguru
+    - munch
+    - pysolar
+    - pyyaml
+    - requests
+    - s3fs
+    - tqdm
+
+tests:
+  - python:
+      imports:
+        - ooi_data_explorations
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+
+about:
+  summary: Tools for interacting with OOI data, including downloading, cleaning, and visualizing.
+  license: MIT
+  license_file: LICENSE.txt
+  homepage: https://github.com/oceanobservatories/ooi-data-explorations
+
+extra:
+  recipe-maintainers:
+    - ocefpaf
